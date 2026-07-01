@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>انشر بحثك - المعرفة القانونية</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="page-shell page-guest">
+        <nav class="topbar">
+            <div class="container topbar-inner">
+                <a class="brand" href="index.html">
+                    <span class="brand-mark"><img src="logo.jpg" alt="شعار المعرفة القانونية" /></span>
+                    <div>
+                        <p class="brand-name">المعرفة القانونية</p>
+                        <p class="brand-sub">  للمشتغلين بالقانون</p>
+                    </div>
+                </a>
+                <button id="navToggle" class="nav-toggle" aria-label="افتح القائمة">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="who-are-we.html">من نحن</a></li>
+                    <li><a href="services.html">خدماتنا</a></li>
+                    <li><a href="blog.html">المدونة</a></li>
+                    <li><a href="research.html">الأبحاث المنشورة</a></li>
+                    <li><a href="guest-article.html" class="active">انشر بحثك</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="page-hero page-ghost-hero">
+            <div class="container hero-grid">
+                <div class="hero-copy hero-copy-centered">
+                    <p class="eyebrow">انشر بحثك</p>
+                    <h1>صفحة نشر الأبحاث بتصميم نظيف وألوان متناغمة</h1>
+                    <p>شارك بحثك القانوني بسهولة مع مظهر حديث وتجربة مستخدم أفضل.</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="container page-form-grid research-page-grid">
+            <section class="panel card publish-panel">
+                <div class="section-header">
+                    <div>
+                        <h2 id="formSectionTitle">أضِف بحث جديد</h2>
+                        <p id="formSectionDesc">أدخل بيانات البحث وسنخزّنها في قائمة الأبحاث المنشورة.</p>
+                    </div>
+                </div>
+                <form id="researchForm" class="research-form">
+                    <div class="form-row">
+                        <label for="name" id="labelName">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required placeholder="اكتب اسمك هنا" />
+                    </div>
+                    <div class="form-row split">
+                        <div>
+                            <label for="role" id="labelRole">المهنة</label>
+                            <select id="role" name="role" required>
+                                <option value="" id="roleOptionAll">اختر</option>
+                                <option value="محامٍ" id="roleOptionLawyer">محامٍ</option>
+                                <option value="دكتور جامعة" id="roleOptionDoctor">دكتور جامعة</option>
+                                <option value="باحث" id="roleOptionResearcher">باحث</option>
+                                <option value="أخرى" id="roleOptionOther">أخرى</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="title">عنوان البحث</label>
+                            <input type="text" id="title" name="title" required placeholder="عنوان البحث" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="abstract" id="labelAbstract">ملخص البحث</label>
+                        <textarea id="abstract" name="abstract" rows="6" placeholder="اكتب وصفاً موجزاً للبحث"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <label for="file" id="labelFile">تحميل ملف البحث (PDF أو Word)</label>
+                        <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" />
+                    </div>
+                    <button type="submit" class="button button-primary" id="submitButton">نشر البحث</button>
+                </form>
+            </section>
+
+            <section class="panel card research-preview-panel">
+                <div class="section-header">
+                    <div>
+                        <h2>معاينة الأبحاث</h2>
+                        <p>راجع أحدث الأبحاث المنشورة مباشرة بعد الإضافة.</p>
+                    </div>
+                </div>
+                <div class="filters">
+                    <input id="searchInput" type="search" placeholder="ابحث بالاسم أو عنوان البحث" />
+                    <select id="roleFilter">
+                        <option value="" id="filterOptionAll">كل المهن</option>
+                        <option value="محامٍ" id="filterOptionLawyer">محامٍ</option>
+                        <option value="دكتور جامعة" id="filterOptionDoctor">دكتور جامعة</option>
+                        <option value="باحث" id="roleOptionResearcher">باحث</option>
+                        <option value="أخرى" id="filterOptionOther">أخرى</option>
+                    </select>
+                </div>
+                <div class="stats-row">
+                    <span id="researchCount">عدد الأبحاث: 0</span>
+                    <button id="clearFilters" type="button" class="button button-secondary">مسح الفلاتر</button>
+                </div>
+                <div id="entriesList" class="entries">
+                    <p class="empty">لا يوجد أبحاث حتى الآن. كن أول من ينشر.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div>
+                    <p>منصة خاصة لنشر الأبحاث العلمية للمحامين ودكاترة الجامعة.</p>
+                </div>
+                <div>
+                    <p>التخزين على الخادم محلي.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

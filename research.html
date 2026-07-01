@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الأبحاث المنشورة - المعرفة القانونية</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="page-shell page-research">
+        <nav class="topbar">
+            <div class="container topbar-inner">
+                <a class="brand" href="index.html">
+                    <span class="brand-mark"><img src="logo.jpg" alt="شعار المعرفة القانونية" /></span>
+                    <div>
+                        <p class="brand-name">المعرفة القانونية</p>
+                        <p class="brand-sub">للمشتغلين بالقانون  </p>
+                    </div>
+                </a>
+                <button id="navToggle" class="nav-toggle" aria-label="افتح القائمة">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="who-are-we.html">من نحن</a></li>
+                    <li><a href="services.html">خدماتنا</a></li>
+                    <li><a href="blog.html">المدونة</a></li>
+                    <li><a href="research.html" class="active">الأبحاث المنشورة</a></li>
+                    <li><a href="guest-article.html">انشر بحثك</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="page-hero research-hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">جميع الأبحاث</p>
+                    <h1>استعرض الأبحاث المنشورة بطريقة منظمة وواضحة</h1>
+                    <p>قائمة الأبحاث القانونية متاحة للبحث والتصفية وفق الدور القانوني والعنوان.</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="container content-grid">
+            <section class="section research-search-panel">
+                <div class="search-panel">
+                    <div class="search-input">
+                        <input id="searchInput" type="search" placeholder="ابحث في الأبحاث باسم الباحث أو عنوان البحث" />
+                        <button id="searchButton" type="button" class="button button-primary">بحث</button>
+                    </div>
+                    <div class="tag-group">
+                        <button type="button" class="filter-chip active" data-role="">الكل</button>
+                        <button type="button" class="filter-chip" data-role="محامٍ">محامٍ</button>
+                        <button type="button" class="filter-chip" data-role="دكتور جامعة">دكتور جامعة</button>
+                        <button type="button" class="filter-chip" data-role="باحث">باحث</button>
+                        <button type="button" class="filter-chip" data-role="أخرى">أخرى</button>
+                    </div>
+                    <select id="roleFilter" hidden>
+                        <option value="">الكل</option>
+                        <option value="محامٍ">محامٍ</option>
+                        <option value="دكتور جامعة">دكتور جامعة</option>
+                        <option value="باحث">باحث</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="section entries-panel research-list-panel">
+                <div class="section-header">
+                    <div>
+                        <h2>الأبحاث المنشورة</h2>
+                        <p id="summaryText">يمكنك البحث أو تصفية الأبحاث حسب المهنة والعنوان.</p>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <span id="researchCount">عدد الأبحاث: 0</span>
+                    <button id="clearFilters" type="button" class="button button-secondary">مسح الفلاتر</button>
+                </div>
+                <div id="entriesList" class="entries"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div>
+                    <p>هذه الصفحة تعرض الأبحاث القانونية المنشورة بطريقة واضحة وسهلة.</p>
+                </div>
+                <div>
+                    <p>يمكنك دائماً العودة لنشر بحث جديد عبر صفحة "انشر بحثك".</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@ const upload = multer({
     },
   }),
   limits: {
-    fileSize: 10000 * 10240 * 10240,
+    fileSize: 1000 * 1024 * 1024,
   },
 });
 

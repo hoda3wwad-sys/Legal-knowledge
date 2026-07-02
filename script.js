@@ -1,3 +1,16 @@
+const pageLoader = document.getElementById("pageLoader");
+
+if (pageLoader) {
+  document.body.classList.add("loading");
+  window.addEventListener("load", () => {
+    window.setTimeout(() => {
+      pageLoader.classList.add("is-hidden");
+      document.body.classList.remove("loading");
+      window.setTimeout(() => pageLoader.remove(), 450);
+    }, 800);
+  });
+}
+
 const form = document.getElementById("researchForm");
 const entriesContainer = document.getElementById("entriesList") || document.getElementById("entries");
 const searchInput = document.getElementById("searchInput");

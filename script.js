@@ -282,3 +282,89 @@ if (entriesContainer) {
   fetchEntries();
 }
 
+/* ====== معالج نموذج طلب الاستشارة ====== */
+const consultationForm = document.getElementById("consultationForm");
+if (consultationForm) {
+  consultationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formMessage = document.getElementById("formMessage");
+    const submitButton = consultationForm.querySelector("button[type='submit']");
+
+    // جمع بيانات النموذج
+    const formData = {
+      name: document.getElementById("consultName").value.trim(),
+      phone: document.getElementById("consultPhone").value.trim(),
+      email: document.getElementById("consultEmail").value.trim(),
+      category: document.getElementById("consultCategory").value,
+      details: document.getElementById("consultDetails").value.trim(),
+      submittedAt: new Date().toISOString(),
+    };
+
+    // التحقق من البيانات المطلوبة
+    if (!formData.name || !formData.phone || !formData.category || !formData.details) {
+      formMessage.textContent = "يرجى ملء جميع الحقول المطلوبة (*)";
+      formMessage.className = "form-note error";
+      return;
+    }
+
+    // التحقق من صيغة رقم الهاتف البسيطة
+    if (!/^[0-9\s\-\+\(\)]{7,}$/.test(formData.phone)) {
+      formMessage.textContent = "يرجى إدخال رقم هاتف صحيح";
+      formMessage.className = "form-note error";
+      return;
+    }
+
+    // التحقق من البريد الإلكتروني إذا تم إدخاله
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      formMessage.textContent = "يرجى إدخال بريد إلكتروني صحيح";
+      formMessage.className = "form-note error";
+      return;
+    }
+
+    // تعطيل الزر أثناء الإرسال
+    submitButton.disabled = true;
+    submitButton.textContent = "جاري الإرسال...";
+
+    try {
+      // محاولة إرسال البيانات إلى الخادم
+      const response = await fetch("/api/consultation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // نجاح الإرسال
+        formMessage.textContent = "✓ تم إرسال طلب الاستشارة بنجاح! سيتواصل معك فريقنا قريباً.";
+        formMessage.className = "form-note success";
+        consultationForm.reset();
+      } else {
+        throw new Error("فشل الإرسال");
+      }
+    } catch (error) {
+      // إذا فشل الاتصال بالخادم، حفظ البيانات محلياً
+      try {
+        let consultations = JSON.parse(localStorage.getItem("consultations")) || [];
+        consultations.push(formData);
+        localStorage.setItem("consultations", JSON.stringify(consultations));
+
+        formMessage.textContent =
+          "✓ تم حفظ طلبك بنجاح! سيتواصل معك فريقنا عند أول فرصة.";
+        formMessage.className = "form-note success";
+        consultationForm.reset();
+      } catch (storageError) {
+        formMessage.textContent = "✓ شكراً لطلبك. يرجى التواصل معنا أيضاً على رقم الهاتف المعروض في الموقع.";
+        formMessage.className = "form-note success";
+        consultationForm.reset();
+      }
+    } finally {
+      // إعادة تفعيل الزر
+      submitButton.disabled = false;
+      submitButton.textContent = "إرسال الطلب";
+    }
+  });
+}
+

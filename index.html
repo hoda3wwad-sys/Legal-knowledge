@@ -51,7 +51,7 @@
                     <p>  احدث التشريعات والاحكام القضائية والمؤلفات الفقهية لكل ما يخص الأنظمة في مرجع واحد، مع فريق مختص وخدمات بحثية متقدمة تُسهل الوصول إلى المحتوى القانوني بسرعة ودقة.</p>
                     <div class="hero-actions">
                         <a href="guest-article.html" class="button button-primary">انشر بحثك</a>
-                        <a href="research.html" class="button button-primary">استكشف </a>
+                        <a href="#consultation-anchor" class="button button-primary">اطلب استشارة</a>
                     </div>
                 </div>
                 <div class="hero-image landing-image">
@@ -134,6 +134,48 @@
                         <h3>تصنيف الأحكام</h3>
                         <p>نوفر ملخصات وقواعد مُستنبطة من الأحكام القضائية لتسهيل البحث القانوني.</p>
                     </article>
+                </div>
+            </section>
+
+            <section class="section consultation-section" id="consultation-anchor">
+                <div class="consultation-container">
+                    <div class="consultation-header">
+                        <span class="section-subtitle">طلب استشارة</span>
+                        <h2>استشارة قانونية من محام متخصص</h2>
+                        <p>تواصل معنا الآن واحصل على استشارة قانونية متخصصة من فريقنا. ملء النموذج أدناه وسيتولى فريقنا الاتصال بك قريباً.</p>
+                    </div>
+                    <form id="consultationForm" class="consultation-form">
+                        <div class="form-group">
+                            <label for="consultName">الاسم الكامل *</label>
+                            <input type="text" id="consultName" name="name" placeholder="أدخل اسمك الكامل" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="consultPhone">رقم الاتصال *</label>
+                            <input type="tel" id="consultPhone" name="phone" placeholder="رقم هاتفك (مثال: 0501234567)" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="consultEmail">البريد الإلكتروني</label>
+                            <input type="email" id="consultEmail" name="email" placeholder="بريدك الإلكتروني (اختياري)" />
+                        </div>
+                        <div class="form-group">
+                            <label for="consultCategory">نوع الاستشارة *</label>
+                            <select id="consultCategory" name="category" required>
+                                <option value="">اختر نوع الاستشارة</option>
+                                <option value="عقود">عقود وتعاقدات</option>
+                                <option value="أحوال-شخصية">أحوال شخصية</option>
+                                <option value="قانون-عام">قانون عام</option>
+                                <option value="تجاري">قانون تجاري</option>
+                                <option value="عمل">قانون العمل</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="consultDetails">وصف المشكلة أو الاستفسار *</label>
+                            <textarea id="consultDetails" name="details" placeholder="اشرح المشكلة أو استفسارك بالتفصيل..." rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="button button-primary">إرسال الطلب</button>
+                        <p class="form-note" id="formMessage"></p>
+                    </form>
                 </div>
             </section>
 
